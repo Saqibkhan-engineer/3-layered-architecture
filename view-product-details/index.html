@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+</head>
+<body>
+  <h1>Product Details</h1>
+  <button onclick="getProductDetails()">View Product</button>
+  <div id="productDetails"></div>
+
+  <script>
+    async function getProductDetails() {
+      const response = await fetch('http://localhost:3000/api/product/1');
+      const product = await response.json();
+
+      document.getElementById('productDetails').innerHTML = `
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <p>Price: $${product.price}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
